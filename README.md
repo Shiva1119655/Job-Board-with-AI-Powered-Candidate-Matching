@@ -16,7 +16,7 @@ A simple job board web application with two roles: Company Admin and Candidate.
 
 1. Navigate to `backend`
 2. Install dependencies: `pip install -r requirements.txt`
-3. Run: `uvicorn main:app --reload --host 0.0.0.0 --port 8000`
+3. Run: `uvicorn main:app --reload --http://127.0.0.1:8000/`
 
 ### API Endpoints
 
