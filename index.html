@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Job Board</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">AI-powered job matching (Developed by K Shivaram)</p>
+        <h1>Find your next software role with smart matching</h1>
+        <p class="hero-copy">Search, compare, and apply to jobs tailored to your skills, experience, and software interests.</p>
+        <div class="hero-actions">
+          <button id="match-button" class="primary-button">Find Matches</button>
+          <button id="refresh-jobs" class="secondary-button">Refresh Jobs</button>
+        </div>
+      </div>
+      <aside class="hero-visual">
+        <div class="visual-card">
+          <div class="visual-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="code-window">
+            <div class="code-line"><span class="code-keyword"></span> FREE AI Course = <span class="code-string">"https://www.coursera.org/learn/introduction-to-generative-ai"</span>;</div>
+            
+          </div>
+          <div class="stats-row visual-stats">
+            <span class="badge">AI</span>
+            <span class="badge">Cloud</span>
+            <span class="badge">Backend</span>
+            <span class="badge">Design</span>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <main class="grid-layout">
+      <!-- Candidate profile removed — simplified interface -->
+
+      <section class="panel card-glow">
+        <h2>Job Search</h2>
+        <textarea id="match-query" placeholder="Describe the job or role you want..." rows="4"></textarea>
+        <div class="button-row">
+          <button id="match-action" class="primary-button">Search Matches</button>
+          <button id="clear-query" class="tertiary-button">Clear</button>
+        </div>
+        <div id="match-results" class="results"></div>
+      </section>
+
+      <section class="panel card-glow">
+        <div class="section-header">
+          <h2>Job Listings</h2>
+          <span class="badge">Live</span>
+        </div>
+        <div id="jobs-list" class="results"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+    <div id="apply-modal" class="modal hidden" aria-hidden="true">
+      <div class="modal-overlay" id="modal-overlay"></div>
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title">
+        <h3 id="apply-modal-title">Apply for Job</h3>
+        <p id="apply-job-meta" class="muted">Job title • company • location</p>
+        <form id="apply-form">
+          <input type="hidden" id="apply-job-id" name="job_id" />
+          <div class="form-row">
+            <label for="cover-letter">Cover Letter (optional)</label>
+            <textarea id="cover-letter" name="cover_letter" rows="6" placeholder="Write a short note to the employer..."></textarea>
+          </div>
+          <div class="modal-actions">
+            <button type="submit" id="submit-application" class="primary-button">Submit Application</button>
+            <button type="button" id="cancel-application" class="tertiary-button">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
