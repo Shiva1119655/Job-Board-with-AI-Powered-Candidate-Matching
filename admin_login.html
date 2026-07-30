@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login | AI Job Board</title>
+  <link rel="stylesheet" href="/static/styles.css?v=2" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Restricted Access</p>
+        <h1>Admin access required</h1>
+        <p class="hero-copy">Only authorized company admins can manage job listings and applications.</p>
+      </div>
+    </header>
+
+    <main class="grid-layout">
+      <section class="panel card-glow">
+        <h2>Admin Login</h2>
+        <form id="admin-login-form" class="results">
+          <div class="form-row">
+            <label for="admin-password">Password</label>
+            <input id="admin-password" type="password" required />
+          </div>
+          <div class="button-row">
+            <button type="submit" class="primary-button">Access Admin</button>
+            <a href="/" class="tertiary-button" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Back to jobs</a>
+          </div>
+        </form>
+        <p id="admin-login-error" class="muted" style="margin-top:12px;"></p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const form = document.getElementById('admin-login-form');
+    const errorBox = document.getElementById('admin-login-error');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const password = document.getElementById('admin-password').value;
+      const response = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password })
+      });
+      if (response.ok) {
+        localStorage.removeItem('admin_password');
+        document.cookie = 'admin_password=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+        window.location.href = '/admin?auth=granted';
+      } else {
+        errorBox.textContent = 'Invalid password. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>
