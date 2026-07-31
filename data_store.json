@@ -22,7 +22,7 @@
     "b3e12ea1-52ec-4ba9-aabf-6a91c594c799": {
       "id": "b3e12ea1-52ec-4ba9-aabf-6a91c594c799",
       "title": "Python Developer",
-      "company": "KPT Tech Service Inc",
+      "company": "KPI Tech Services",
       "description": "High-performance Python Web Developer specializing in building responsive, scalable dashboards for web and mobile platforms. Expert in combining Python backends with modern Tailwind CSS frontends to deliver fast, data-driven user experiences",
       "required_skills": [
         "Django",
@@ -389,92 +389,29 @@
     }
   },
   "applications": {
-    "406cdc56-7937-4015-b683-8cf39b7fcc17": {
-      "id": "406cdc56-7937-4015-b683-8cf39b7fcc17",
+    "shivaram_application": {
+      "id": "shivaram_application",
       "job_id": "7a3788fb-cbb4-49d8-84d5-cf3a0dca02ff",
       "job_title": "Associate software developer",
-      "candidate_id": "dd983e2f-52ef-4e68-90f9-fe707ce02f66",
-      "candidate_name": null,
-      "status": "Shortlisted",
-      "cover_letter": null,
-      "applied_at": "2026-07-30T23:51:28.713982"
-    },
-    "01f2ba69-a4c7-4ad3-bf99-946d52bd6bac": {
-      "id": "01f2ba69-a4c7-4ad3-bf99-946d52bd6bac",
-      "job_id": "7a3788fb-cbb4-49d8-84d5-cf3a0dca02ff",
-      "job_title": "Associate software developer",
-      "candidate_id": "8615210c-ccee-48d3-a0ea-df4a479e030d",
-      "candidate_name": null,
-      "status": "Applied",
-      "cover_letter": null,
-      "applied_at": "2026-07-30T23:54:05.229138"
-    },
-    "50e13607-9c1c-4eb4-a009-244715ad88c9": {
-      "id": "50e13607-9c1c-4eb4-a009-244715ad88c9",
-      "job_id": "7a3788fb-cbb4-49d8-84d5-cf3a0dca02ff",
-      "job_title": "Associate software developer",
-      "candidate_id": "24cb3955-1ff4-42e6-8393-e86722897c09",
-      "candidate_name": null,
-      "status": "Applied",
-      "cover_letter": null,
-      "applied_at": "2026-07-30T23:55:36.278794"
-    },
-    "7fc7d557-05a1-40f4-bb86-b20589a7ba0d": {
-      "id": "7fc7d557-05a1-40f4-bb86-b20589a7ba0d",
-      "job_id": "7a3788fb-cbb4-49d8-84d5-cf3a0dca02ff",
-      "job_title": "Associate software developer",
-      "candidate_id": "b2df809b-9ac5-476d-982f-c9ada0c42c64",
-      "candidate_name": "Ravi Kumar",
+      "candidate_id": "shivaram_candidate",
+      "candidate_name": "Shivaram",
       "candidate_details": {
-        "name": "Ravi Kumar",
+        "name": "Shivaram",
         "skills": [
           "Python",
           "FastAPI"
         ],
-        "preferred_location": "Hyderabad",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "status": "Applied",
-      "cover_letter": null,
-      "applied_at": "2026-07-31T00:06:09.497743"
-    },
-    "26e018c2-b9d4-461c-9ea0-f247405965ee": {
-      "id": "26e018c2-b9d4-461c-9ea0-f247405965ee",
-      "job_id": "7a3788fb-cbb4-49d8-84d5-cf3a0dca02ff",
-      "job_title": "Associate software developer",
-      "candidate_id": "a4eeaad1-e3fd-4423-8e8e-c6a932ff10be",
-      "candidate_name": "Ravi Kumar",
-      "candidate_details": {
-        "name": "Ravi Kumar",
-        "skills": [
-          "Python",
-          "FastAPI"
+        "education": [
+          "B.Tech"
         ],
-        "preferred_location": "Hyderabad",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "status": "Applied",
-      "cover_letter": null,
-      "applied_at": "2026-07-31T00:06:34.564776"
-    },
-    "692bc2b9-e00c-412a-a1fb-48a7cd5bffd8": {
-      "id": "692bc2b9-e00c-412a-a1fb-48a7cd5bffd8",
-      "job_id": "job18_id",
-      "job_title": "QA Automation Engineer",
-      "candidate_id": "9bcf3a0d-2bd0-4fa3-ad4a-358f3bea80c0",
-      "candidate_name": "Test Candidate",
-      "candidate_details": {
-        "name": "Test Candidate",
-        "skills": [
-          "Python",
-          "FastAPI"
+        "projects": [
+          "Job Board"
         ],
+        "email": "shivaram@example.com",
+        "mobile_number": "+91 98765 43210",
+        "linkedin_url": "https://linkedin.com/in/shivaram",
+        "resume_url": "https://example.com/shivaram-resume.pdf",
+        "cover_letter": "I am eager to contribute.",
         "preferred_location": "Hyderabad",
         "role_type": "Full-time",
         "domain_interest": [
@@ -482,126 +419,15 @@
         ]
       },
       "status": "Pending",
-      "cover_letter": null,
-      "created_at": "2026-07-31T09:20:13.487056",
-      "applied_at": "2026-07-31T09:20:13.487056"
-    },
-    "1e796009-24e6-485b-82ab-0191113969b8": {
-      "id": "1e796009-24e6-485b-82ab-0191113969b8",
-      "job_id": "job19_id",
-      "job_title": "Backend Engineer",
-      "candidate_id": "0c9a0259-435c-40a6-8222-59e681043570",
-      "candidate_name": "Status Candidate",
-      "candidate_details": {
-        "name": "Status Candidate",
-        "skills": [
-          "Python"
-        ],
-        "preferred_location": "Remote",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "status": "Shortlisted",
-      "cover_letter": null,
-      "created_at": "2026-07-31T09:20:13.519672",
-      "applied_at": "2026-07-31T09:20:13.519672"
-    },
-    "2bee0e99-8a08-48f1-b81e-cd78f80d8e1e": {
-      "id": "2bee0e99-8a08-48f1-b81e-cd78f80d8e1e",
-      "job_id": "job20_id",
-      "job_title": "QA Automation Engineer",
-      "candidate_id": "4895d9f0-df52-4e33-87c2-8c636a4e02ef",
-      "candidate_name": "Test Candidate",
-      "candidate_details": {
-        "name": "Test Candidate",
-        "skills": [
-          "Python",
-          "FastAPI"
-        ],
-        "preferred_location": "Hyderabad",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "status": "Pending",
-      "cover_letter": null,
-      "created_at": "2026-07-31T09:21:38.689093",
-      "applied_at": "2026-07-31T09:21:38.689093"
-    },
-    "a82ab47d-9fcd-4e74-905b-95f7c6060a7e": {
-      "id": "a82ab47d-9fcd-4e74-905b-95f7c6060a7e",
-      "job_id": "job21_id",
-      "job_title": "Backend Engineer",
-      "candidate_id": "718bad04-e1ae-4771-bd52-202618b7fcac",
-      "candidate_name": "Status Candidate",
-      "candidate_details": {
-        "name": "Status Candidate",
-        "skills": [
-          "Python"
-        ],
-        "preferred_location": "Remote",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "status": "Shortlisted",
-      "cover_letter": null,
-      "created_at": "2026-07-31T09:21:38.726852",
-      "applied_at": "2026-07-31T09:21:38.726852"
-    },
-    "4bd42e2e-f037-4587-b9aa-9c1ecc663f83": {
-      "id": "4bd42e2e-f037-4587-b9aa-9c1ecc663f83",
-      "job_id": "job22_id",
-      "job_title": "QA Automation Engineer",
-      "candidate_id": "a80cf5bb-a9d2-4307-a64a-f8a2e28b71df",
-      "candidate_name": "Test Candidate",
-      "candidate_details": {
-        "name": "Test Candidate",
-        "skills": [
-          "Python",
-          "FastAPI"
-        ],
-        "preferred_location": "Hyderabad",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "status": "Pending",
-      "cover_letter": null,
-      "created_at": "2026-07-31T09:22:56.802118",
-      "applied_at": "2026-07-31T09:22:56.802118"
-    },
-    "36bb4522-f938-4140-b5a0-7ce0fa1044de": {
-      "id": "36bb4522-f938-4140-b5a0-7ce0fa1044de",
-      "job_id": "job23_id",
-      "job_title": "Backend Engineer",
-      "candidate_id": "4abddaaa-d910-4654-ade8-3c5bfc474b04",
-      "candidate_name": "Status Candidate",
-      "candidate_details": {
-        "name": "Status Candidate",
-        "skills": [
-          "Python"
-        ],
-        "preferred_location": "Remote",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "status": "Shortlisted",
-      "cover_letter": null,
-      "created_at": "2026-07-31T09:22:56.835383",
-      "applied_at": "2026-07-31T09:22:56.835383"
+      "cover_letter": "I am eager to contribute.",
+      "created_at": "2026-07-31T10:22:29.993048",
+      "applied_at": "2026-07-31T10:22:29.993048"
     }
   },
   "candidates": {
-    "dd983e2f-52ef-4e68-90f9-fe707ce02f66": {
-      "name": "Mina Rao",
+    "shivaram_candidate": {
+      "id": "shivaram_candidate",
+      "name": "Shivaram",
       "skills": [
         "Python",
         "FastAPI"
@@ -612,6 +438,11 @@
       "projects": [
         "Job Board"
       ],
+      "email": "shivaram@example.com",
+      "mobile_number": "+91 98765 43210",
+      "linkedin_url": "https://linkedin.com/in/shivaram",
+      "resume_url": "https://example.com/shivaram-resume.pdf",
+      "cover_letter": "I am eager to contribute.",
       "preferences": {
         "preferred_location": "Hyderabad",
         "role_type": "Full-time",
@@ -619,225 +450,7 @@
           "Product"
         ]
       },
-      "id": "dd983e2f-52ef-4e68-90f9-fe707ce02f66",
-      "created_at": "2026-07-30T23:51:28.680755"
-    },
-    "8615210c-ccee-48d3-a0ea-df4a479e030d": {
-      "name": "Mina Rao",
-      "skills": [
-        "Python",
-        "FastAPI"
-      ],
-      "education": [
-        "B.Tech"
-      ],
-      "projects": [
-        "Job Board"
-      ],
-      "preferences": {
-        "preferred_location": "Hyderabad",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "id": "8615210c-ccee-48d3-a0ea-df4a479e030d",
-      "created_at": "2026-07-30T23:54:05.208164"
-    },
-    "24cb3955-1ff4-42e6-8393-e86722897c09": {
-      "name": "Ravi Kumar",
-      "skills": [
-        "Python",
-        "FastAPI"
-      ],
-      "education": [
-        "B.Tech"
-      ],
-      "projects": [
-        "Job Board"
-      ],
-      "preferences": {
-        "preferred_location": "Hyderabad",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "id": "24cb3955-1ff4-42e6-8393-e86722897c09",
-      "created_at": "2026-07-30T23:55:36.257952"
-    },
-    "b2df809b-9ac5-476d-982f-c9ada0c42c64": {
-      "name": "Ravi Kumar",
-      "skills": [
-        "Python",
-        "FastAPI"
-      ],
-      "education": [
-        "B.Tech"
-      ],
-      "projects": [
-        "Job Board"
-      ],
-      "preferences": {
-        "preferred_location": "Hyderabad",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "id": "b2df809b-9ac5-476d-982f-c9ada0c42c64",
-      "created_at": "2026-07-31T00:06:09.460919"
-    },
-    "a4eeaad1-e3fd-4423-8e8e-c6a932ff10be": {
-      "name": "Ravi Kumar",
-      "skills": [
-        "Python",
-        "FastAPI"
-      ],
-      "education": [
-        "B.Tech"
-      ],
-      "projects": [
-        "Job Board"
-      ],
-      "preferences": {
-        "preferred_location": "Hyderabad",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "id": "a4eeaad1-e3fd-4423-8e8e-c6a932ff10be",
-      "created_at": "2026-07-31T00:06:34.551287"
-    },
-    "9bcf3a0d-2bd0-4fa3-ad4a-358f3bea80c0": {
-      "name": "Test Candidate",
-      "skills": [
-        "Python",
-        "FastAPI"
-      ],
-      "education": [
-        "B.Tech"
-      ],
-      "projects": [
-        "Job Board"
-      ],
-      "preferences": {
-        "preferred_location": "Hyderabad",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "id": "9bcf3a0d-2bd0-4fa3-ad4a-358f3bea80c0",
-      "created_at": "2026-07-31T09:20:13.475146"
-    },
-    "0c9a0259-435c-40a6-8222-59e681043570": {
-      "name": "Status Candidate",
-      "skills": [
-        "Python"
-      ],
-      "education": [
-        "B.Tech"
-      ],
-      "projects": [
-        "API"
-      ],
-      "preferences": {
-        "preferred_location": "Remote",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "id": "0c9a0259-435c-40a6-8222-59e681043570",
-      "created_at": "2026-07-31T09:20:13.507830"
-    },
-    "4895d9f0-df52-4e33-87c2-8c636a4e02ef": {
-      "name": "Test Candidate",
-      "skills": [
-        "Python",
-        "FastAPI"
-      ],
-      "education": [
-        "B.Tech"
-      ],
-      "projects": [
-        "Job Board"
-      ],
-      "preferences": {
-        "preferred_location": "Hyderabad",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "id": "4895d9f0-df52-4e33-87c2-8c636a4e02ef",
-      "created_at": "2026-07-31T09:21:38.678497"
-    },
-    "718bad04-e1ae-4771-bd52-202618b7fcac": {
-      "name": "Status Candidate",
-      "skills": [
-        "Python"
-      ],
-      "education": [
-        "B.Tech"
-      ],
-      "projects": [
-        "API"
-      ],
-      "preferences": {
-        "preferred_location": "Remote",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "id": "718bad04-e1ae-4771-bd52-202618b7fcac",
-      "created_at": "2026-07-31T09:21:38.712900"
-    },
-    "a80cf5bb-a9d2-4307-a64a-f8a2e28b71df": {
-      "name": "Test Candidate",
-      "skills": [
-        "Python",
-        "FastAPI"
-      ],
-      "education": [
-        "B.Tech"
-      ],
-      "projects": [
-        "Job Board"
-      ],
-      "preferences": {
-        "preferred_location": "Hyderabad",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "id": "a80cf5bb-a9d2-4307-a64a-f8a2e28b71df",
-      "created_at": "2026-07-31T09:22:56.789256"
-    },
-    "4abddaaa-d910-4654-ade8-3c5bfc474b04": {
-      "name": "Status Candidate",
-      "skills": [
-        "Python"
-      ],
-      "education": [
-        "B.Tech"
-      ],
-      "projects": [
-        "API"
-      ],
-      "preferences": {
-        "preferred_location": "Remote",
-        "role_type": "Full-time",
-        "domain_interest": [
-          "Product"
-        ]
-      },
-      "id": "4abddaaa-d910-4654-ade8-3c5bfc474b04",
-      "created_at": "2026-07-31T09:22:56.823098"
+      "created_at": "2026-07-31T10:22:29.993048"
     }
   }
 }
