@@ -84,6 +84,18 @@
   </div>
 
   <div id="toast" class="toast hidden"></div>
+
+  <div id="candidate-detail-modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-overlay" id="candidate-detail-overlay"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="candidate-detail-title">
+      <h3 id="candidate-detail-title">Candidate Details</h3>
+      <div id="candidate-detail-body"></div>
+      <div class="modal-actions">
+        <button type="button" id="close-candidate-detail" class="primary-button">Close</button>
+      </div>
+    </div>
+  </div>
+
   <script src="/static/app.js?v=2"></script>
 </body>
 </html>
