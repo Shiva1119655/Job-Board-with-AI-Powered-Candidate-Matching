@@ -186,7 +186,10 @@ async function saveCandidateFromForm(e) {
   const mobile_number = document.getElementById('cand-mobile').value.trim() || null;
   const linkedin_url = document.getElementById('cand-linkedin').value.trim() || null;
   const cover_letter = document.getElementById('cand-cover-letter').value.trim() || null;
-  const resume_url = document.getElementById('cand-resume').value.trim() || null;
+  const resumeInput = document.getElementById('cand-resume-file');
+  const resume_url = resumeInput && resumeInput.files && resumeInput.files[0]
+    ? await getResumeDataUrl(resumeInput.files[0])
+    : (document.getElementById('cand-resume').value.trim() || null);
   const preferred_location = document.getElementById('cand-location').value.trim();
   const role_type = document.getElementById('cand-role-type').value.trim();
   const domain_interest = document.getElementById('cand-domains').value.split(',').map(s => s.trim()).filter(Boolean);
@@ -249,6 +252,75 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function dataUrlToBlob(dataUrl) {
+  const [header, data] = dataUrl.split(',');
+  const mimeMatch = header.match(/data:(.*?);/);
+  const mime = mimeMatch ? mimeMatch[1] : 'application/octet-stream';
+  const binary = atob(data);
+  const array = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i += 1) {
+    array[i] = binary.charCodeAt(i);
+  }
+  return new Blob([array], { type: mime });
+}
+
+function getResumeFileName(resumeUrl, fallback = 'resume') {
+  if (resumeUrl && resumeUrl.includes('data:')) {
+    const mimeMatch = resumeUrl.match(/data:([^;]+);/);
+    const extension = mimeMatch ? {
+      'application/pdf': 'pdf',
+      'application/msword': 'doc',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'docx',
+      'application/vnd.ms-excel': 'xls',
+      'text/plain': 'txt'
+    }[mimeMatch[1]] : 'pdf';
+    return `${fallback}.${extension || 'pdf'}`;
+  }
+  if (resumeUrl) {
+    const lastSegment = resumeUrl.split(/[?#]/)[0].split('/').pop();
+    if (lastSegment && lastSegment.includes('.')) return lastSegment;
+  }
+  return `${fallback}.pdf`;
+}
+
+function triggerResumeDownload(resumeUrl) {
+  if (!resumeUrl) {
+    return;
+  }
+
+  const downloadLink = document.createElement('a');
+  let blobUrl = null;
+
+  if (resumeUrl.startsWith('data:')) {
+    const blob = dataUrlToBlob(resumeUrl);
+    blobUrl = URL.createObjectURL(blob);
+    downloadLink.href = blobUrl;
+  } else {
+    downloadLink.href = resumeUrl;
+    downloadLink.target = '_blank';
+    downloadLink.rel = 'noopener noreferrer';
+  }
+
+  downloadLink.download = getResumeFileName(resumeUrl);
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  downloadLink.remove();
+
+  if (blobUrl) {
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+  }
+}
+
+function getResumeDataUrl(file) {
+  if (!file) return Promise.resolve(null);
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result));
+    reader.onerror = () => reject(new Error('Unable to read resume file.'));
+    reader.readAsDataURL(file);
+  });
 }
 
 function formatJobDescription(description) {
@@ -436,7 +508,7 @@ async function submitApplication(jobId) {
     const cover_letter = document.getElementById('apply-cover-letter')?.value.trim() || null;
     const resumeInput = document.getElementById('apply-resume');
     const resume_url = resumeInput && resumeInput.files && resumeInput.files[0]
-      ? resumeInput.files[0].name
+      ? await getResumeDataUrl(resumeInput.files[0])
       : null;
     const preferred_location = document.getElementById('apply-location')?.value.trim() || '';
     const role_type = document.getElementById('apply-role-type')?.value.trim() || '';
@@ -631,20 +703,80 @@ async function fetchAdminJobs() {
   }
 }
 
+function buildCandidateDetailMarkup(application) {
+  const details = application.candidate_details || {};
+  const resumeUrl = details.resume_url || application.resume_url || null;
+  const rows = [
+    ['Name', application.candidate_name || details.name || 'N/A'],
+    ['Email', details.email || 'N/A'],
+    ['Mobile Number', details.mobile_number || 'N/A'],
+    ['Preferred Location', details.preferred_location || 'N/A'],
+    ['Role Type', details.role_type || 'N/A'],
+    ['Skills', details.skills && details.skills.length ? details.skills.join(', ') : 'N/A'],
+    ['Education', details.education && details.education.length ? details.education.join(', ') : 'N/A'],
+    ['Projects', details.projects && details.projects.length ? details.projects.join(', ') : 'N/A'],
+    ['LinkedIn', details.linkedin_url ? `<a href="${escapeHtml(details.linkedin_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(details.linkedin_url)}</a>` : 'N/A'],
+    ['Resume', resumeUrl ? `<button type="button" class="resume-download-btn" data-resume-url="${escapeHtml(resumeUrl)}">Download Resume</button>` : 'N/A'],
+    ['Domain Interest', details.domain_interest && details.domain_interest.length ? details.domain_interest.join(', ') : 'N/A'],
+    ['Cover Letter', application.cover_letter || details.cover_letter || 'N/A'],
+    ['Applied For', application.job_title || 'N/A'],
+    ['Status', application.status || 'Pending'],
+    ['Applied At', application.created_at || application.applied_at || 'N/A'],
+  ];
+
+  return `
+    <div class="candidate-detail-grid">
+      ${rows.map(([label, value]) => `
+        <div class="detail-row">
+          <strong>${escapeHtml(label)}</strong>
+          <span>${value}</span>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function openCandidateDetailModal(application) {
+  const modal = document.getElementById('candidate-detail-modal');
+  const body = document.getElementById('candidate-detail-body');
+  if (!modal || !body) return;
+
+  body.innerHTML = buildCandidateDetailMarkup(application);
+  body.querySelectorAll('[data-resume-url]').forEach((button) => {
+    button.addEventListener('click', () => triggerResumeDownload(button.dataset.resumeUrl));
+  });
+  modal.classList.remove('hidden');
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeCandidateDetailModal() {
+  const modal = document.getElementById('candidate-detail-modal');
+  if (!modal) return;
+  modal.classList.add('hidden');
+  modal.setAttribute('aria-hidden', 'true');
+}
+
 function createApplicationRow(application) {
   const statuses = ['Pending', 'Shortlisted', 'Rejected'];
   const candidateName = application.candidate_name || application.candidate_id || 'Anonymous';
   const details = application.candidate_details || {};
+  const resumeUrl = details.resume_url || application.resume_url || null;
   const detailBits = [];
+  if (details.email) detailBits.push(`Email: ${details.email}`);
+  if (details.mobile_number) detailBits.push(`Mobile: ${details.mobile_number}`);
   if (details.preferred_location) detailBits.push(details.preferred_location);
   if (details.role_type) detailBits.push(details.role_type);
   if (details.skills && details.skills.length) detailBits.push(`Skills: ${details.skills.join(', ')}`);
   if (details.education && details.education.length) detailBits.push(`Education: ${details.education.join(', ')}`);
   if (details.projects && details.projects.length) detailBits.push(`Projects: ${details.projects.join(', ')}`);
+  if (details.linkedin_url) detailBits.push(`LinkedIn: ${details.linkedin_url}`);
+  if (resumeUrl) detailBits.push('Resume: View Resume');
+  if (application.cover_letter) detailBits.push(`Cover Letter: ${application.cover_letter}`);
+
   const detailMarkup = detailBits.length ? `<div class="muted">${escapeHtml(detailBits.join(' • '))}</div>` : '';
 
   return `
-    <tr>
+    <tr data-app-id="${application.id}" style="cursor:pointer;">
       <td>
         <div>${escapeHtml(candidateName)}</div>
         ${detailMarkup}
@@ -678,6 +810,20 @@ function renderApplications(applications) {
       </table>
     </div>
   `;
+
+  container.querySelectorAll('tbody tr[data-app-id]').forEach(row => {
+    row.addEventListener('click', (event) => {
+      if (event.target && event.target.closest('.admin-status-select')) {
+        return;
+      }
+      const appId = row.getAttribute('data-app-id');
+      const app = applications.find(item => item.id === appId);
+      if (app) {
+        openCandidateDetailModal(app);
+      }
+    });
+  });
+
   container.querySelectorAll('.admin-status-select').forEach(select => {
     select.addEventListener('change', async (event) => {
       const appId = event.target.getAttribute('data-app-id');
@@ -810,6 +956,16 @@ async function initializeApp() {
   const adminResetButton = document.getElementById('admin-reset');
   if (adminResetButton) {
     adminResetButton.addEventListener('click', resetAdminJobForm);
+  }
+
+  const closeCandidateDetailBtn = document.getElementById('close-candidate-detail');
+  if (closeCandidateDetailBtn) {
+    closeCandidateDetailBtn.addEventListener('click', closeCandidateDetailModal);
+  }
+
+  const candidateDetailOverlay = document.getElementById('candidate-detail-overlay');
+  if (candidateDetailOverlay) {
+    candidateDetailOverlay.addEventListener('click', closeCandidateDetailModal);
   }
 
   fetchJobs();
